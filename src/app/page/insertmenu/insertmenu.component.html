@@ -1,0 +1,29 @@
+<div *ngIf="insertmenu == true then a">
+
+</div>
+<ng-template #a>
+  <div style="color: red; font-size: 140%;">
+    <b>*กรุณาใส่ข้อมูลให้ครบ*</b>
+  </div>
+</ng-template>
+<div style="display: flex; flex-direction: column;
+           height: 400px; width: 500px; margin: 20px; font-family: 'Sriracha', cursive">
+  <p>เพิ่มรายการอาหาร</p>
+  <label>ชื่ออาหาร</label>
+  <input type="text" name="name" #name>
+  <label>ราคา</label>
+  <input type="number" name="price" #price>
+  <label>URL รูปภาพ</label>
+  <input type="text" name="image" #url>
+  <label>เลือกประเภทอาหาร</label>
+  <select name="type" #type>
+    <option *ngFor="let type of menutype " value="{{type.tid}}"
+    [selected] = "type == type"
+    > {{type.tname}}
+    </option>
+  </select>
+
+  <br>
+  <button (click)="addmenu(name.value,price.value,url.value, + type.value)" type="button" class="btn btn-success">ยืนยัน</button><br>
+  <button (click)="close()" type="button" class="btn btn-danger">ย้อนกลับ</button><br>
+</div>

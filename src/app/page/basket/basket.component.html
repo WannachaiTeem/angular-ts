@@ -1,0 +1,67 @@
+<div style="font-family: 'Sriracha', cursive; ">
+  <div class="container" style="margin-top: 5%;">
+      <mat-card style="margin-bottom: 15px;padding-bottom: 5px;padding-top: 5px; background-color: darkgray;">
+        <div class="row">
+          <div class="col-1" style="font-size: 140%;">ลำดับ</div>
+          <div class="col-2" style="font-size: 140%;">รูปสินค้า</div>
+          <div class="col-4" style="font-size: 140%;">ชื่อสินค้า</div>
+          <div class="col-1" style="font-size: 140%;">ราคา</div>
+          <div class="col-1" style="font-size: 140%;">จำนวน</div>
+          <div class="col-1" style="font-size: 140%;">ราคารวม</div>
+          <div class="col-2" style="font-size: 140%;">จัดการสินค้า</div>
+        </div>
+      </mat-card>
+  </div>
+</div>
+
+<div class="container" style="font-family: 'Sriracha', cursive;">
+    <div  *ngFor="let menu of this.listm ;let i=index;">
+      <div *ngIf="menu != undefined">
+        <mat-card style="margin-bottom: 15px;padding-bottom: 5px;padding-top: 5px; background-color: gainsboro;">
+
+        <div class="row">
+          <div class="col-1">{{i+1}}</div>
+          <div class="col-2"><img src="{{menu.image}}" width="90%" height="80%" alt=""></div>
+          <div class="col-4">{{menu.mname}}</div>
+          <div class="col-1">{{menu.price}}</div>
+          <div class="col-1" style="text-align: center;">{{menu.amount}}</div>
+          <div class="col-1" style="text-align: center;">{{menu.sprice}}</div>
+          <div class="col-2">
+            <button (click)="del(menu.lmid,i)"  type="button" class="btn btn-danger">
+              <mat-icon>
+                delete
+              </mat-icon>
+              ลบ
+            </button><br><br>
+            <button (click)="edit(menu.lmid,i)"  type="button" class="btn btn-warning">
+              <mat-icon>
+                edit
+              </mat-icon>
+              แก้ไข
+            </button>
+          </div>
+        </div>
+        </mat-card>
+      </div>
+    </div>
+</div>
+
+<div class="container" style="font-family: 'Sriracha', cursive;">
+  <div class="row" >
+    <div class="col-2" style="font-size: 120%;">ราคารวมทั้งหมด  :</div>
+    <div class="col-6" style="font-size: 120%;" >
+      <div style="width: 100%;">
+        {{this.sumprice}}  บาท ค่าส่ง : {{this.kasong}} บาท ราคาที่ต้องจ่าย : {{this.sum}}
+      </div>
+    </div>
+    <!-- <div *ngFor="let menu of this.listm ;let i=index;">
+    </div> -->
+    <!-- <div class="col-2" style="font-size: 120%;">รายการในตะกร้าทั้งหมด  : {{j}}</div> -->
+    <div class="col-2">
+      <button (click)="pay();" style="font-size: 130%; margin-left: 40%;" type="button" class="btn btn-success" >
+        ชำระเงิน
+      </button>
+    </div>
+  </div>
+</div>
+

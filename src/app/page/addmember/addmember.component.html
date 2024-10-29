@@ -1,0 +1,22 @@
+<div *ngIf="addfal == true then a">
+
+</div>
+<ng-template #a>
+  <div style="color: red; font-size: 140%;">
+    <b>*กรุณากรอกข้อมูลให้ครบ*</b>
+  </div>
+</ng-template>
+<div style="display: flex; flex-direction: column;
+           height: 400px; width: 500px; margin: 20px; font-family: 'Sriracha', cursive">
+  <p>เข้าสู่ระบบ</p>
+  <label>ชื่อ</label>
+  <input type="text" name="name" #name>
+  <label>อีเมลล์</label>
+  <input type="email" name="email" #email>
+  <label>รหัสผ่าน</label>
+  <input type="password" name="password" #password>
+
+  <br>
+  <button (click)="addmember(name.value,email.value,password.value)" type="button" class="btn btn-success">ยืนยัน</button><br>
+  <button (click)="close()" type="button" class="btn btn-danger">ย้อนกลับ</button><br>
+</div>

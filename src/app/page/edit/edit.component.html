@@ -1,0 +1,46 @@
+<div class="container" style="font-family: 'Sriracha', cursive;">
+  <div class="row">
+    <div class="col-10">
+      <h5>แก้จำนวนสินค้า</h5>
+    </div>
+    <div class="col-2">
+      <button type="button" class="btn btn-danger" (click)="close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+</div><br>
+<div class="image-col" style="font-family: 'Sriracha', cursive;">
+  <img src="{{ menu.image }}" width="600px" height="300px"><br><br>
+  <p style="text-align: center; font-size: 120%">
+    ชื่อ {{ this.menu.mname }} <br />
+    ราคา {{ this.menu.price }} บาท
+  </p>
+</div>
+<div class="container" style="font-family: 'Sriracha', cursive;">
+  <div class="row">
+    <div class="col-3">
+      <button type="button" class="btn btn-primary" style="margin-left: 30%;" (click)="addd(this.i)">
+        <mat-icon>
+          remove_circle
+        </mat-icon>
+      </button>
+    </div>
+    <div class="col-6">
+      <input type="text" style="width: 50%; margin-left: 25%; text-align: center;" value="{{this.i}}" #inputs>
+    </div>
+    <div class="col-3">
+      <button type="button" class="btn btn-primary" (click)="addn(this.i)">
+        <mat-icon>
+          add_circle
+        </mat-icon>
+      </button>
+    </div>
+    <button [routerLink]="'/basket'" style="width: 50%; margin-left: 25%; margin-bottom: 10px;" type="button" class="btn btn-success" (click)="edit(inputs.value)">
+      ยืนยันการแก้ไข
+      <!-- <mat-icon>check_small</mat-icon> -->
+    </button><br>
+    <button style="width: 50%; margin-left: 25%; margin-bottom: 10px;" [routerLink]="'/basket'" type="button" class="btn btn-danger" (click)="close()">ยกเลิก</button>
+  </div>
+
+

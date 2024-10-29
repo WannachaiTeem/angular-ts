@@ -1,0 +1,43 @@
+<div class="container" style="font-family: 'Sriracha', cursive; width: 480px;">
+  <div class="row">
+    <div class="col-10" style="margin-top: 10px; font-size: 140%;">
+      ใบเสร็จ
+    </div>
+  </div>
+</div>
+<div class="container" style="font-size: 110%; margin-left: 10px; width: 480px;">
+  <div *ngIf="orderbill[0] != undefined then a"></div>
+  <ng-template #a>
+    <div class="row"> ชื่อ-สกุล : {{orderbill[0].oname}}</div>
+    <div class="row"> เบอร์โทร : {{orderbill[0].phone}}</div>
+    <div class="row"> ที่อยู่  : {{orderbill[0].address}}</div>
+
+  <!-- <div class="row">
+  <div class="col-2">ที่อยู่ :</div>
+  <div class="col-10">{{orderbill[0].address}}</div>
+  </div> -->
+  </ng-template>
+  <div class="row">
+    <div class="col-2">จำนวน</div>
+    <div class="col-7">ชื่อสินค้า</div>
+    <div class="col-2">ราคา</div>
+  </div>
+  <div *ngFor="let bill of this.bill1">
+    <div class="row">
+      <div class="col-2">{{bill.amount}}</div>
+      <div class="col-7">{{bill.mname}}</div>
+      <div class="col-2">{{bill.price}}</div>
+    </div>
+  </div>
+  <div *ngIf="orderbill[0] != undefined then b"></div>
+  <ng-template #b>
+  <div class="row">
+    <div class="col-3">ราคารวม :</div>
+    <div class="col-9">{{orderbill[0].sumprice}} ฿</div>
+  </div>
+</ng-template>
+
+  <button style="margin-left: 350px;" type="button" class="btn btn-success" (click)="close();">เสร็จสิ้น</button>
+
+
+</div>

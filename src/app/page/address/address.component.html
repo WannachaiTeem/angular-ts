@@ -1,0 +1,21 @@
+<div *ngIf="adddata == true then a">
+
+</div>
+<ng-template #a>
+  <div style="color: red; font-size: 140%;">
+    <b>*กรุณาตรวจสอบข้อมูลให้ถูกต้อง*</b>
+  </div>
+</ng-template>
+<div style="display: flex; flex-direction: column;
+           height: 400px; width: 500px; margin: 20px; font-family: 'Sriracha', cursive">
+  <p>รายระเอียดที่อยู่</p>
+  <label>ชื่อ</label>
+  <input type="text" name="name" #name>
+  <label>เบอร์โทร</label>
+  <input type="text" name="phone" #phone>
+  <label>ที่อยู่</label>
+  <input type="text" name="address" #address>
+  <br>
+  <button (click)="buy(name.value,phone.value,address.value,'ยังไม่ส่ง')" type="button" class="btn btn-primary" > ยืนยัน</button><br>
+  <button (click)="close()" type="button" class="btn btn-danger">ปิด</button>
+</div>

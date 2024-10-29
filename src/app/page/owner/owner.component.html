@@ -1,0 +1,127 @@
+
+<div style="font-family: 'Sriracha', cursive;">
+  <div  style="margin-top: 5%; margin-left: 10px; margin-right: 10px;">
+      <mat-card style="margin-bottom: 15px;padding-bottom: 5px;padding-top: 5px; background-color: darkgray;">
+        <div class="row" style="font-size: 140%;">
+          <div class="col-2">
+            <div class="row">
+              <div class="col-2" >ลำดับ</div>
+              <div class="col-10" style="text-align: center;" >ชื่อลูกค้า</div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="row">
+              <div class="col-4" >รูปภาพ</div>
+          <div class="col-4" >ชื่ออาหาร</div>
+          <div class="col-2" >ราคา</div>
+          <div class="col-2" >จำนวน</div>
+            </div>
+          </div>
+          <div class="col-2" style="text-align: center;">ที่อยู่</div>
+          <div class="col-1" >ราคารวม</div>
+          <div class="col-1" >เบอร์โทร</div>
+          <div class="col-1"  style="text-align: center;">สถานะ</div>
+          <div class="col-1" >ยืนยันการส่ง</div>
+        </div>
+      </mat-card>
+  </div>
+</div>
+
+
+
+<div style="font-size: 120%; font-family: 'Sriracha', cursive;">
+  <div  style="margin-top: 1%; margin-left: 10px; margin-right: 10px;">
+      <div *ngFor="let order of this.orders1 let i = index">
+        <mat-card style="margin-bottom: 15px;padding-bottom: 5px;padding-top: 5px; background-color: gainsboro;">
+          <div class="row">
+            <div class="col-2">
+              <div class="row">
+                <div class="col-2" >{{i+1}}</div>
+                <div class="col-10" style="text-align: center;">{{order.oname}}</div>
+              </div>
+            </div>
+            <div class="col-4">
+             <div class="row" *ngFor="let listowner of this.listowner1">
+              <div *ngIf="listowner.loid==order.oid; then a else b "> </div>
+              <ng-template #a>
+                <div class="col-4" style="margin-top: 10px;">
+                  <img src="{{listowner.image}}" alt="" style="width: 100%;">
+                </div>
+                <div class="col-4" >{{listowner.mname}}</div>
+                <div class="col-2" >{{listowner.price}}</div>
+                <div class="col-2" style="text-align: center;">{{listowner.amount}}</div>
+              </ng-template>
+              <ng-template #b></ng-template>
+             </div>
+            </div>
+                <div class="col-2" >{{order.address}}</div>
+                <div class="col-1" > ค่าส่ง{{kasong}} <br> รวมที่ลูกค้าจ่าย {{order.sumprice}} บาท</div>
+                <div class="col-1" >{{order.phone}}</div>
+                <div class="col-1">
+                  <div class="row" *ngIf="order.status == 'จัดส่งแล้ว'; then us else uf " >  </div>
+                  <ng-template #us>
+                  <button type="button" class="btn btn-warning" style="text-align: center;">
+                    {{order.status}}
+                    </button>
+                    <button mat-raised-button color="accent" style="margin-top: 10px;" (click)="showbill(order.oid);">
+                      รายละเอียด
+                    </button>
+                  </ng-template>
+                  <ng-template #uf>
+                    <button type="button" class="btn btn-danger" style="text-align: center;">
+                      {{order.status}}
+                    </button>
+                  </ng-template>
+                </div>
+                <div class="col-1" style="text-align: center;">
+                  <button type="button" class="btn btn-success" (click)="updatestatus(order.oid,'จัดส่งแล้ว')">ยืนยันการส่ง</button>
+                </div>
+          </div>
+        </mat-card>
+      </div>
+  </div>
+</div>
+
+<!-- (click)="updatestatus(order.oid,'จัดส่งแล้ว') -->
+
+<!-- <div  style="margin-top: 10px;">
+  <div class="card texts2">
+    <div *ngFor="let order of this.orders1">
+      <mat-card style="margin-bottom: 15px;padding-bottom: 5px;padding-top: 5px;">
+        <div class="row listorder" >
+          <div class="col-1" style="text-align: center;">{{order.oname}}</div>
+
+          <div class="col-7">
+            <div class="row" *ngFor="let listowner of this.listowner1">
+              <div *ngIf="listowner.loid==order.oid; then a else b "></div>
+              <ng-template #a>
+                <div class="col-2">
+                  <img src="{{listowner.image}}" alt="" style="width: 100%;">
+                </div>
+                <div class="col-2">{{listowner.mname}}</div>
+                <div class="col-1"style="">{{listowner.price}}</div>
+                <div class="col-1">{{listowner.amount}}</div>
+                <div class="col-6">{{listowner.address}}</div>
+              </ng-template>
+              <ng-template #b></ng-template>
+            </div>
+
+
+          </div>
+          <div class="col-1" >
+            {{order.sumprice}}
+          </div>
+          <div class="col-1" >
+              {{order.phone}}
+            </div>
+          <div class="col-1" style="text-align: center;">
+            {{order.status}}
+          </div>
+          <div class="col-1" style="text-align: center;">
+            <button type="button" class="btn btn-success" (click)="updatestatus(order.oid,'จัดส่งแล้ว')">ยืนยันการส่งสำเร็จ</button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div> -->

@@ -1,0 +1,13 @@
+<div style="display: flex; flex-direction: column;
+           height: 400px; width: 500px; margin: 20px; font-family: 'Sriracha', cursive">
+  <p>เข้าสู่ระบบ</p>
+  <label>อีเมลล์</label>
+  <input type="email" name="email" #email>
+  <label>รหัสผ่าน</label>
+  <input type="password" name="password" #password>
+  <br>
+  <button (click)="login(email.value,password.value)" type="button" class="btn btn-success"> ยืนยัน</button><br>
+  <button (click)="close()" type="button" class="btn btn-primary">ปิด</button><br>
+  <button (click)="addmember()" type="button" class="btn btn-danger">สมัครสมาชิก</button>
+
+</div>

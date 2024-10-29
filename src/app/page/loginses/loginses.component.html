@@ -1,0 +1,14 @@
+<div style="font-family: 'Sriracha', cursive;">
+  <p>เข้าสู่ระบบสำเร็จ</p>
+
+  <div *ngIf="this.status==1; then a else b"></div>
+  <ng-template #a>
+    <p> สวัสดี user</p>
+  <button style="margin-top: 10px; margin-left: 250px;" type="button" class="btn btn-success" [routerLink]="''" (click)="close()" >ok</button>
+  </ng-template>
+  <ng-template #b>
+    <p>สวัสดี owner</p>
+    <button style="margin-top: 10px; margin-left: 250px;" type="button" class="btn btn-success" [routerLink]="'/owner'" (click)="close()">ok</button>
+  </ng-template>
+
+</div>
